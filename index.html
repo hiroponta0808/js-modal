@@ -6,17 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 </head>
 <body>
   <div id="wrapper">
-    <button id="modal-btn" class="modal-btn">OPEN</button>
+    <ul id="images" class="images">
+      <li><img src="./img/img01.jpg" alt=""></li>
+      <li><img src="./img/img02.jpg" alt=""></li>
+      <li><img src="./img/img03.jpg" alt=""></li>
+    </ul>
+<button id="close-btn">close</button>
     <div id="modal" class="modal">
       <div id="modal-content" class="modal-content">
-        <button id="close-btn" class="close-btn">CLOSE</button>
+        <img src="" alt="" id="modal-img">
       </div>
     </div>
+    <button id="btn01"></button>
+    <button id="btn02"></button>
+    <button id="btn03"></button>
   </div>
 
   <script src="script.js"></script>
+  <!-- <script src="sample.js"></script> -->
 </body>
 </html>
