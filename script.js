@@ -92,3 +92,7 @@ for (var i = 0; i < imageLists.children.length; i++) {
     }
   })(i));
 }
+
+for (var i = images.length -1; i < array.length; i++) {
+  array[i]
+}
