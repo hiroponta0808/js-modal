@@ -82,17 +82,78 @@ for (var i = 0; i < imageLists.children.length; i++) {
   (function(index) {
     return function() {
       var url = imageLists.children[index].children[0].src;
-      console.log(url);
+      // console.log(url);
       var imageSrc = url.split('/');
-      console.log(imageSrc);
+      // console.log(imageSrc);
       var imageSrcLastElem = imageSrc[imageSrc.length - 1];
-      console.log(imageSrc[imageSrc.length - 1]);
+      // console.log(imageSrc[imageSrc.length - 1]);
       modalImg.src = './img/' + imageSrcLastElem;
       modal.classList.add('modal-open')
     }
   })(i));
 }
 
-for (var i = images.length -1; i < array.length; i++) {
-  array[i]
-}
+// for (var i = images.length -1; i < array.length; i++) {
+//   array[i]
+// }
+prevBtn = document.getElementById('prev-btn');
+nextBtn = document.getElementById('next-btn');
+
+prevBtn.addEventListener('click', function(event) {
+  event.preventDefault();
+  console.log(event);
+  var currentImgSrc = modalImg.getAttribute('src');
+  console.log(currentImgSrc);
+  var currentImgSrcSplit = currentImgSrc.split('/');
+  console.log(currentImgSrcSplit);
+  var currentImgNumber = currentImgSrcSplit[2].substr(4, 1);
+  console.log(currentImgNumber);
+  currentImgNumber--;
+  if(currentImgNumber === 0) {
+    currentImgNumber = 3;
+  }
+  var prevImgSrc = './img/img0' + currentImgNumber + '.jpg';
+  console.log(prevImgSrc);
+  modalImg.setAttribute('src', prevImgSrc);
+});
+
+nextBtn.addEventListener('click', function(event) {
+  event.preventDefault();
+  console.log(event);
+
+  var currentImgSrc = modalImg.getAttribute('src');
+  // console.log(currentImgSrc);
+  var currentImgSrcSplit = currentImgSrc.split('/');
+  // console.log(currentImgSrcSplit[2].substr(4, 1));
+  var currentImgNumber = +currentImgSrcSplit[2].substr(4, 1);
+  if(currentImgNumber !== imageLists.children.length) {
+    currentImgNumber++;
+  }else {
+    currentImgNumber = 1;
+  }
+
+  // if(currentImgNumber === 4) {
+  //   currentImgNumber = 1;
+  // }
+  var nextImgSrc = './img/img0' + currentImgNumber + '.jpg';
+  console.log(nextImgSrc);
+  modalImg.setAttribute('src', nextImgSrc);
+
+
+});
+
+prevBtn.addEventListener('click', function(event) {
+  msg(event)
+});
+
+nextBtn.addEventListener('click', function(event) {
+  msg(event)
+});
+
+function msg(e) {
+  if(e.target.classList.contains('fa-caret-left')) {
+    console.log('prevBtnが押された時の処理');
+  }else {
+    console.log('nextBtnが押された時の処理');
+  }
+};
