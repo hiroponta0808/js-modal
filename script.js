@@ -1,6 +1,6 @@
-var modalBtn = document.getElementById('modal-btn');
+// var modalBtn = document.getElementById('modal-btn');
 var modal = document.getElementById('modal');
-var closeBtn = document.getElementById('close-btn');
+// var closeBtn = document.getElementById('close-btn');
 var modalContent = document.getElementById('modal-content');
 
 // modalBtn.addEventListener('click', function() {
@@ -96,64 +96,80 @@ for (var i = 0; i < imageLists.children.length; i++) {
 // for (var i = images.length -1; i < array.length; i++) {
 //   array[i]
 // }
-prevBtn = document.getElementById('prev-btn');
-nextBtn = document.getElementById('next-btn');
+var prevBtn = document.getElementById('prev-btn');
+var nextBtn = document.getElementById('next-btn');
+
+// prevBtn.addEventListener('click', function(event) {
+//   event.preventDefault();
+//   // console.log(event);
+//   var currentImgSrc = modalImg.getAttribute('src');
+//   // console.log(currentImgSrc);
+//   var currentImgSrcSplit = currentImgSrc.split('/');
+//   // console.log(currentImgSrcSplit);
+//   var currentImgNumber = currentImgSrcSplit[2].substr(4, 1);
+//   // console.log(currentImgNumber);
+//   currentImgNumber--;
+//   if(currentImgNumber === 0) {
+//     currentImgNumber = 3;
+//   }
+//   var prevImgSrc = './img/img0' + currentImgNumber + '.jpg';
+//   console.log(prevImgSrc);
+//   modalImg.setAttribute('src', prevImgSrc);
+// });
+//
+// nextBtn.addEventListener('click', function(event) {
+//   event.preventDefault();
+//   console.log(event);
+//
+//   var currentImgSrc = modalImg.getAttribute('src');
+//   // console.log(currentImgSrc);
+//   var currentImgSrcSplit = currentImgSrc.split('/');
+//   // console.log(currentImgSrcSplit[2].substr(4, 1));
+//   var currentImgNumber = +currentImgSrcSplit[2].substr(4, 1);
+//   if(currentImgNumber !== imageLists.children.length) {
+//     currentImgNumber++;
+//   }else {
+//     currentImgNumber = 1;
+//   }
+//
+//   // if(currentImgNumber === 4) {
+//   //   currentImgNumber = 1;
+//   // }
+//   var nextImgSrc = './img/img0' + currentImgNumber + '.jpg';
+//   console.log(nextImgSrc);
+//   modalImg.setAttribute('src', nextImgSrc);
+//
+//
+// });
 
 prevBtn.addEventListener('click', function(event) {
-  event.preventDefault();
-  console.log(event);
+  modalSlide(event)
+  console.dir(event);
+});
+
+nextBtn.addEventListener('click', function(event) {
+  modalSlide(event)
+});
+
+function modalSlide(e) {
+  e.preventDefault();
   var currentImgSrc = modalImg.getAttribute('src');
-  console.log(currentImgSrc);
   var currentImgSrcSplit = currentImgSrc.split('/');
-  console.log(currentImgSrcSplit);
   var currentImgNumber = currentImgSrcSplit[2].substr(4, 1);
-  console.log(currentImgNumber);
-  currentImgNumber--;
-  if(currentImgNumber === 0) {
-    currentImgNumber = 3;
-  }
-  var prevImgSrc = './img/img0' + currentImgNumber + '.jpg';
-  console.log(prevImgSrc);
-  modalImg.setAttribute('src', prevImgSrc);
-});
-
-nextBtn.addEventListener('click', function(event) {
-  event.preventDefault();
-  console.log(event);
-
-  var currentImgSrc = modalImg.getAttribute('src');
-  // console.log(currentImgSrc);
-  var currentImgSrcSplit = currentImgSrc.split('/');
-  // console.log(currentImgSrcSplit[2].substr(4, 1));
-  var currentImgNumber = +currentImgSrcSplit[2].substr(4, 1);
-  if(currentImgNumber !== imageLists.children.length) {
-    currentImgNumber++;
-  }else {
-    currentImgNumber = 1;
-  }
-
-  // if(currentImgNumber === 4) {
-  //   currentImgNumber = 1;
-  // }
-  var nextImgSrc = './img/img0' + currentImgNumber + '.jpg';
-  console.log(nextImgSrc);
-  modalImg.setAttribute('src', nextImgSrc);
-
-
-});
-
-prevBtn.addEventListener('click', function(event) {
-  msg(event)
-});
-
-nextBtn.addEventListener('click', function(event) {
-  msg(event)
-});
-
-function msg(e) {
+  //どちらのボタンが押されたのかの判定
   if(e.target.classList.contains('fa-caret-left')) {
     console.log('prevBtnが押された時の処理');
+    currentImgNumber--;
+    if (currentImgNumber === 0) {
+      currentImgNumber = 3;
+    }
   }else {
     console.log('nextBtnが押された時の処理');
+    currentImgNumber++;
+    if (currentImgNumber === 4) {
+      currentImgNumber = 1;
+    }
   }
+    var nextImgSrc = './img/img0' + currentImgNumber + '.jpg';
+    modalImg.setAttribute('src', nextImgSrc);
 };
