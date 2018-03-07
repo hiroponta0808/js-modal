@@ -17,8 +17,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
   background-color: #fff;
   padding: 30px;
+}
+
+.images {
+  display: flex;
+}
+
+img {
+  width: 100%;
 }
